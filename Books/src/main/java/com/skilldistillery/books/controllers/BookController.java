@@ -6,9 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -53,5 +55,35 @@ public class BookController {
 		}
 
 		return book;
+	}
+
+	@PutMapping("books/{bookId}")
+	public Book update(@RequestBody Book book, @PathVariable Integer bookId, HttpServletResponse res) {
+		try {
+			book = bookService.update(bookId, book);
+			if (book == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			book = null;
+		}
+
+		return book;
+	}
+
+	@DeleteMapping("books/{bookId}")
+	public void deleteBook(@PathVariable Integer bookId, HttpServletResponse res) {
+		try {
+			if (bookService.deleteBook(bookId)) {
+				res.setStatus(204);
+			} else {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+		}
 	}
 }
