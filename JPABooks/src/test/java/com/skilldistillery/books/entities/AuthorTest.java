@@ -2,7 +2,7 @@ package com.skilldistillery.books.entities;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,12 +14,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class BookTest {
+class AuthorTest {
 
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Book book;
-	
+	private Author author;
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("JPABooks");
@@ -33,34 +33,25 @@ class BookTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		book = em.find(Book.class, 1);
+		author = em.find(Author.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		em.close();
-		book = null;
+		author = null;
 	}
 
 	@Test
 	void test_Basic_mapping() {
-		assertNotNull(book);
-		assertEquals("The Wolf Never Sleeps", book.getTitle());
-	}
-	
-	@Test
-	void test_Book_to_Author() {
-		assertNotNull(book);
-		assertNotNull(book.getAuthor());
-		assertEquals("ShienBishop", book.getAuthor().getName());
-		
+		assertNotNull(author);
+		assertEquals("ShienBishop", author.getName());
 	}
 	@Test
-	void test_Book_to_Genre() {
-		assertNotNull(book);
-		assertNotNull(book.getGenre());
-		assertEquals("Fantasy", book.getGenre().getName());
-		
+	void test_Author_to_Book() {
+		assertNotNull(author);
+		assertNotNull(author.getBooks());
+		assertTrue(author.getBooks().size() > 0);;
 	}
 
 }

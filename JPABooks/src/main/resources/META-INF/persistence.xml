@@ -7,6 +7,8 @@
 		<!--begin entities -->
 		
 		<class>com.skilldistillery.books.entities.Book</class>
+		<class>com.skilldistillery.books.entities.Author</class>
+		<class>com.skilldistillery.books.entities.Genre</class>
 		
 		
 		<!--end entities -->
