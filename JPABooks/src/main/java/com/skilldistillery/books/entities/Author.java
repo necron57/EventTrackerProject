@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Author {
 
@@ -19,6 +21,7 @@ public class Author {
 	private String name;
 	
 	@OneToMany(mappedBy = "author")
+	@JsonIgnore
 	private List<Book> books;
 
 	public Author() {
