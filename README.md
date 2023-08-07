@@ -4,6 +4,15 @@
 # Description
 This app is designed to track books that you own and have either read or not that book. 
 
+# Rest Endpoints
+| HTTP Verb | URI                      | Request Body | Response Body |
+|-----------|--------------------------|--------------|---------------|
+| GET       | `/api/books`          |              | List of books |
+| GET       | `/api/books/{id}` |              | Single book   | 
+| POST      | `/api/books`          | Representation of a book| Created book |
+| PUT       | `/api/books/{bookId}` | Representation of a new version of a book | Updated book|
+| DELETE    | `/api/books/{bookId}` |              |                | 
+
 # Technologies used
 Postman, Eclipse, Java, Spring boot, Spring Rest API
 
