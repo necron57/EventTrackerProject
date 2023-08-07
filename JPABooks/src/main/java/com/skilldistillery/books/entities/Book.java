@@ -36,6 +36,9 @@ public class Book {
 	@Column(name = "image_url")
 	private String pictureURL;
 	
+	@Column(name = "has_read")
+	private boolean hasRead;
+	
 	@ManyToOne
 	@JoinColumn(name = "author_id")
 	private Author author;
@@ -102,6 +105,14 @@ public class Book {
 
 	public void setPictureURL(String pictureURL) {
 		this.pictureURL = pictureURL;
+	}
+
+	public boolean isHasRead() {
+		return hasRead;
+	}
+
+	public void setHasRead(boolean hasRead) {
+		this.hasRead = hasRead;
 	}
 
 	public Author getAuthor() {

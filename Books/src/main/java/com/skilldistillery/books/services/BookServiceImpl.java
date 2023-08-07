@@ -60,6 +60,7 @@ public class BookServiceImpl implements BookService {
 			if(book.getGenre() != null) {
 				managedBook.setGenre(book.getGenre());
 			}
+			managedBook.setHasRead(book.isHasRead());
 			bookRepo.saveAndFlush(managedBook);
 		}
 		
