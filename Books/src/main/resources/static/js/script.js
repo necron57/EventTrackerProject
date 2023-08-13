@@ -34,10 +34,26 @@ function loadBookList() {
 
 function displayBookList(bookList) {
 	if (bookList && Array.isArray(bookList)) {
-		let tbody = document.getElementById("bookTableBody");
+		let div = document.getElementById("tableDiv");
+		let table = document.createElement("table");
+		let tableHead = document.createElement("thead");
+		let tableHeadRow = document.createElement("tr");
+		let th = document.createElement("th");
+		let tbody = document.createElement("tbody");
+		table.classList.add('table', 'table-striped');
+		tableHead.classList.add('table-dark');
+		div.appendChild(table);
+		table.appendChild(tableHead);
+		tableHead.appendChild(tableHeadRow);
+		th.textContent = "ID";
+		tableHeadRow.appendChild(th);
+		th = document.createElement("th");
+		th.textContent = "Book Title";
+		tableHeadRow.appendChild(th);
 		for (let book of bookList) {
 			let tr = document.createElement("tr");
 			let td = document.createElement("td");
+			table.appendChild(tbody);
 			td.textContent = book.id;
 			tr.appendChild(td);
 
@@ -113,7 +129,7 @@ function displayBookDetails(book) {
 	ul.appendChild(list);
 
 	let form = document.createElement("form");
-	form.name = "Update Book";
+	form.name = "UpdateBook";
 	bookDetailDiv.appendChild(form);
 
 	let titleLabel = document.createElement("label");
@@ -191,15 +207,8 @@ function displayBookDetails(book) {
 
 	let fhasRead = document.createElement('input');
 	fhasRead.name = "hasRead";
-	fhasRead.type = "radio";
-	fhasRead.value = "True";
-	form.appendChild(fhasRead);
-
-	fhasRead = document.createElement('input');
-	fhasRead.name = "hasRead";
-	fhasRead.type = "radio";
-	fhasRead.value = "false";
-	fhasRead.textContent = "No";
+	fhasRead.type = "text";
+	fhasRead.value = "true or false";
 	form.appendChild(fhasRead);
 
 	br = document.createElement("br");
@@ -210,11 +219,34 @@ function displayBookDetails(book) {
 	update.type = "submit";
 	update.value = "Update Book";
 	form.appendChild(update);
+
+	update.addEventListener("click", function(e) {
+		e.preventDefault();
+
+		updateBook(book);
+
+	});
+
+	br = document.createElement("br");
+	form.appendChild(br);
+
+	let detstroy = document.createElement('input');
+	detstroy.name = "detstroy";
+	detstroy.type = "submit";
+	detstroy.value = "Detstroy Book";
+	form.appendChild(detstroy);
+
+	detstroy.addEventListener("click", function(e) {
+
+		deleteBook(book.id);
+
+	});
+
 }
 
 function createBook() {
 	document.BookCreate.submitButton.addEventListener('click', function(e) {
-		e.preventDefault();
+
 		let form = document.BookCreate;
 		let title = form.title.value;
 		let description = form.description.value;
@@ -273,7 +305,7 @@ function deleteBook(bookId) {
 				let books = JSON.parse(xhr.responseText);
 				console.log(books);
 				displayBookList(books);
-
+				loadBookList();
 			}
 			else {
 
@@ -284,5 +316,55 @@ function deleteBook(bookId) {
 	xhr.send();
 }
 
+function updateBook(book) {
+	let form = document.UpdateBook;
+	let title = form.title.value;
+	let description = form.description.value;
+	let pageCount = form.pageCount.value;
+	let price = form.price.value;
+	let pictureURL = form.pictureURL.value;
+	let hasRead = form.hasRead.value;
+
+	let newBook = {
+		"title": title,
+		"description": description,
+		"pageCount": pageCount,
+		"price": price,
+		"pictureURL": pictureURL,
+		"hasRead": hasRead,
+		"author": {
+			"id": 2,
+		},
+		"genre": {
+			"id": 2,
+		}
+	};
+
+	let xhr = new XMLHttpRequest();
+
+	xhr.open("PUT", "api/books/" + book.id);
+
+	xhr.setRequestHeader("Content-type", "application/json");
+
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState === 4) {
+			if (xhr.status === 200) {
+				let createdBook = JSON.parse(xhr.responseText);
+				console.log(createdBook);
+				displayBookDetails(createdBook)
+
+			} else {
+				console.error("PUT request failed.");
+				console.error(xhr.status + ': ' + xhr.responseText);
+			}
+		}
+	}
+
+
+	let newBookJson = JSON.stringify(newBook);
+
+	xhr.send(newBookJson);
+
+}
 
 
