@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Book tracker</title>
+	<script src="js/script.js"></script>
+</head>
+
+<body>
+	<h1>Book tracker</h1>
+
+
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Book Title</th>
+				
+			</tr>
+		</thead>
+		<tbody id="bookTableBody">
+
+		</tbody>
+
+
+	</table>
+	<div id="bookDetailDiv"></div>
+	
+	<form name="BookCreate">
+		
+		<label for="title">Title:</label><br>
+		<input type="text" name="title"><br>
+
+		<label for="description">Description:</label><br>
+		<input type="text" name="description"><br>
+		
+		<label for="pageCount">Page Count:</label><br>
+		<input type="text" name="pageCount"><br>
+		
+		<label for="price">Price:</label><br>
+		<input type="number" name="price"><br>
+
+		<label for="pictureURL">Picture URL:</label><br>
+		<input type="text" name="pictureURL"><br>
+		
+		<label for="hasRead">Has it been read yet?:</label><br>
+		<input type="radio" name="hasRead" value="true"  >Yes<br>
+		<input type="radio" name="hasRead" value="false"  >No<br>
+		
+		
+		<button name="submitButton">Submit</button>
+	</form>
+
+	<div id="errors"></div>
+</body>
+
+</html>
