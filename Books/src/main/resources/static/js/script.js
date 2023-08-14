@@ -208,7 +208,7 @@ function displayBookDetails(book) {
 	let fhasRead = document.createElement('input');
 	fhasRead.name = "hasRead";
 	fhasRead.type = "text";
-	fhasRead.value = "true or false";
+	fhasRead.placeholder = "true or false";
 	form.appendChild(fhasRead);
 
 	br = document.createElement("br");
