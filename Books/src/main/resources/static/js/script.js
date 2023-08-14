@@ -50,6 +50,7 @@ function displayBookList(bookList) {
 		th = document.createElement("th");
 		th.textContent = "Book Title";
 		tableHeadRow.appendChild(th);
+		tbody.textContent = " ";
 		for (let book of bookList) {
 			let tr = document.createElement("tr");
 			let td = document.createElement("td");
@@ -237,7 +238,7 @@ function displayBookDetails(book) {
 	form.appendChild(detstroy);
 
 	detstroy.addEventListener("click", function(e) {
-
+	
 		deleteBook(book.id);
 
 	});
@@ -246,7 +247,7 @@ function displayBookDetails(book) {
 
 function createBook() {
 	document.BookCreate.submitButton.addEventListener('click', function(e) {
-
+	e.preventDefault();
 		let form = document.BookCreate;
 		let title = form.title.value;
 		let description = form.description.value;
@@ -304,7 +305,6 @@ function deleteBook(bookId) {
 			if (xhr.status === 200) {
 				let books = JSON.parse(xhr.responseText);
 				console.log(books);
-				displayBookList(books);
 				loadBookList();
 			}
 			else {
@@ -351,7 +351,8 @@ function updateBook(book) {
 			if (xhr.status === 200) {
 				let createdBook = JSON.parse(xhr.responseText);
 				console.log(createdBook);
-				displayBookDetails(createdBook)
+				displayBookDetails(createdBook);
+				
 
 			} else {
 				console.error("PUT request failed.");
