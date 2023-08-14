@@ -34,7 +34,7 @@ DROP TABLE IF EXISTS `genre` ;
 
 CREATE TABLE IF NOT EXISTS `genre` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(300) NOT NULL,
+  `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -50,11 +50,11 @@ CREATE TABLE IF NOT EXISTS `book` (
   `description` TEXT NOT NULL,
   `page_count` VARCHAR(500) NULL,
   `price` DECIMAL(10,0) NULL,
-  `created_at` TIMESTAMP NOT NULL,
   `author_id` INT NOT NULL,
   `genre_id` INT NOT NULL,
+  `created_at` TIMESTAMP NOT NULL,
   `image_url` VARCHAR(2000) NULL,
-  `has_read` VARCHAR(45) NOT NULL,
+  `has_read` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_book_author_idx` (`author_id` ASC),
   INDEX `fk_book_genre1_idx` (`genre_id` ASC),
@@ -108,8 +108,8 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `booktrackerdb`;
-INSERT INTO `book` (`id`, `title`, `description`, `page_count`, `price`, `created_at`, `author_id`, `genre_id`, `image_url`, `has_read`) VALUES (1, 'The Wolf Never Sleeps', 'Seeking strength and glory, the adventurer Lecan challenges monster and maze alike. Until one day, he finds a mysterious black hole…leading to another world! But even in a different world, the path of the “One-Eyed Wolf” remains unchanged. The only question is-can he survive the new world? ', '174', 15.00, DEFAULT, 1, 1, 'https://m.media-amazon.com/images/I/81J+wmROfjL.jpg', '1');
-INSERT INTO `book` (`id`, `title`, `description`, `page_count`, `price`, `created_at`, `author_id`, `genre_id`, `image_url`, `has_read`) VALUES (2, 'Attack On Titan colossal edition', 'Collection of attack on titan volumes 1-5', '1000+', 59.99, DEFAULT, 2, 2, 'https://m.media-amazon.com/images/I/517DXSNzuWL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg', '1');
+INSERT INTO `book` (`id`, `title`, `description`, `page_count`, `price`, `author_id`, `genre_id`, `created_at`, `image_url`, `has_read`) VALUES (1, 'The Wolf Never Sleeps', 'Seeking strength and glory, the adventurer Lecan challenges monster and maze alike. Until one day, he finds a mysterious black hole…leading to another world! But even in a different world, the path of the “One-Eyed Wolf” remains unchanged. The only question is-can he survive the new world?', '174', 15, 1, 1, DEFAULT, 'https://d1466nnw0ex81e.cloudfront.net/n_iv/600/6320274.jpg', 1);
+INSERT INTO `book` (`id`, `title`, `description`, `page_count`, `price`, `author_id`, `genre_id`, `created_at`, `image_url`, `has_read`) VALUES (2, 'Attack On Titan colossal edition', 'Collection of attack on titan volumes 1-5', '1000', 60, 2, 2, DEFAULT, 'https://m.media-amazon.com/images/I/517DXSNzuWL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg', 1);
 
 COMMIT;
 
