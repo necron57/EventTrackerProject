@@ -1,0 +1,5 @@
+<h1>What a Book worm!</h1>
+
+<li *ngFor="let book of bookList">{{book.id}} {{book.title}}
+  <img [src]="book.imgURL" [alt]="book.title"/>
+</li>
