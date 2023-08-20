@@ -7,7 +7,7 @@ export class Book {
   description: string;
   pageCount: string;
   price: number;
-  imgURL: string;
+  pictureURL: string;
   hasRead: boolean;
   genre: string;
   author: string;
@@ -18,7 +18,7 @@ export class Book {
     description: string = '',
     pageCount: string = '',
     price: number = 0,
-    imgURL: string = '',
+    pictureURL: string = '',
     hasRead: boolean = false,
     author: string = '',
     genre: string = ''
@@ -28,7 +28,7 @@ export class Book {
     this.description = description;
     this.pageCount = pageCount;
     this.price = price;
-    this.imgURL = imgURL;
+    this.pictureURL = pictureURL;
     this.hasRead = hasRead;
     this.genre = genre;
     this.author = author;

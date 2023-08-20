@@ -47,6 +47,8 @@ class BookTest {
 		assertNotNull(book);
 		assertEquals("The Wolf Never Sleeps", book.getTitle());
 		assertEquals("ShienBishop", book.getAuthor());
+		assertEquals("https://d1466nnw0ex81e.cloudfront.net/n_iv/600/6320274.jpg", book.getPictureURL());
+		
 	}
 	
 //	@Test

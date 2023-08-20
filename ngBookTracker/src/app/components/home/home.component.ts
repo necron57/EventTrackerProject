@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   bookList: Book[] = [];
   newBook: Book = new Book();
-  editTodo: Book | null = null;
+  editBook: Book | null = null;
   selected: Book | null = null;
 
   constructor(private bookService: BookService) {}
@@ -48,4 +48,33 @@ export class HomeComponent implements OnInit {
       },
     });
   }
+
+  setEditBook(){
+    this.editBook = Object.assign({}, this.selected);
+  }
+
+  updateBook(book: Book, setSeleected: boolean = true){
+    this.bookService.update(book).subscribe({
+      next: (updatedBook) => {
+        if (setSeleected) {
+          this.selected = updatedBook;
+        }
+        this.editBook = null;
+        this.reload();
+      },
+      error: (somethingBad) => {
+        console.error('TodoListComponet.updateTodo: error updating todo');
+        console.error(somethingBad);
+      },
+    });
+  }
+
+
+
+
+
+
+
+
+
 }

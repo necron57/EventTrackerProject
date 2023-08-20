@@ -35,7 +35,18 @@ private url = environment.baseURL + "api/books"
     );
   }
 
-  update(){}
+  update(updatedBook: Book): Observable<Book> {
+    return this.http
+      .put<Book>(this.url + '/' + updatedBook.id, updatedBook)
+      .pipe(
+        catchError((err: any) => {
+          console.log(err);
+          return throwError(
+            () => new Error('TodoService.update(): error updating todo: ' + err)
+          );
+        })
+      );
+  }
 
   delete(){}
 
