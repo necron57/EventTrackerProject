@@ -48,6 +48,15 @@ private url = environment.baseURL + "api/books"
       );
   }
 
-  delete(){}
+  delete(bookId: number){
+    return this.http.delete<void>(this.url + '/' + bookId).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('TodoService.destroy(): error deleting todo: ' + err)
+        );
+      })
+    );
+  }
 
 }

@@ -69,6 +69,17 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  deleteBook(bookId: number){
+    this.bookService.delete(bookId).subscribe({
+      next: () => {
+        this.reload();
+      },
+      error: (somethingBad) => {
+        console.error('TodoListComponet.deleteTodo: error deleiting todo');
+        console.error(somethingBad);
+      },
+    });
+  }
 
 
 

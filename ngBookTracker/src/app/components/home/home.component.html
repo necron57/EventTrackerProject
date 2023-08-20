@@ -10,87 +10,134 @@
     </thead>
     <tbody>
       <tr *ngFor="let book of bookList">
-        <td (click)="displayBook(book)"> <img [src]="book.pictureURL" width="200px" height="300px"/></td>
+        <td (click)="displayBook(book)">
+          <img [src]="book.pictureURL" width="200px" height="300px" />
+        </td>
         <td (click)="displayBook(book)">{{ book.title }}</td>
         <td>
-          <input
-
-            type="checkbox"
-            name="completed"
-            [(ngModel)]="book.hasRead"
-          />
+          <input type="checkbox" name="completed" [(ngModel)]="book.hasRead" />
         </td>
         <td (click)="displayBook(book)">{{ book.hasRead }}</td>
         <td>
-          <button class="btn btn-danger" >
+          <button class="btn btn-danger" (click)="deleteBook(book.id)">
             X
           </button>
         </td>
       </tr>
     </tbody>
   </table>
-  <form>
-    <form>
-      <h2>Add new Book</h2>
-      <label for="newBookTitle">Title:</label>
-      <input name= "newBookTitle"type ="text" [(ngModel)]="newBook.title"><br>
-      <label for="newBookdesc">Description:</label>
-      <input name= "newBookdesc"type ="text" [(ngModel)]="newBook.description"><br>
-      <label for="pageCount">pageCount:</label>
-      <input name= "pageCount"type ="text" [(ngModel)]="newBook.pageCount"><br>
-      <label for="price">price:</label>
-      <input name= "price"type ="number" [(ngModel)]="newBook.price"><br>
-      <label for="imgURL">img:</label>
-      <input name= "imgURL"type ="text" [(ngModel)]="newBook.pictureURL"><br>
-      <label for="hasRead">Has Read:</label>
-      <input name= "hasRead"type ="checkbox" [(ngModel)]="newBook.hasRead"><br>
-      <label for="author">Author:</label>
-      <input name= "author"type ="text" [(ngModel)]="newBook.author"><br>
-      <label for="genre">Genre:</label>
-      <input name= "genre"type ="text" [(ngModel)]="newBook.genre"><br>
-      <button (click)="addBook(newBook);">Add Book</button>
-    </form>
+  <form class="row g-3">
+    <h2>Add new Book</h2>
+    <div class="col-md-6">
+      <label for="newBookTitle" class="form-label">Title:</label>
+      <input name="newBookTitle" type="text" [(ngModel)]="newBook.title" class="form-control"/><br />
+    </div>
+    <div class="col-md-6">
 
+      <label for="newBookdesc" class="form-label">Description:</label>
+      <textarea name="newBookdesc"
+
+      [(ngModel)]="newBook.description"
+      class="form-control">
+      </textarea>
+      <br />
+    </div>
+    <label for="imgURL" class="form-label">Img:</label>
+    <input name="imgURL" type="text" [(ngModel)]="newBook.pictureURL" class="form-control"/><br />
+    <div class="col-md-6">
+
+      <label for="author" class="form-label">Author:</label>
+      <input name="author" type="text" [(ngModel)]="newBook.author" class="form-control"/><br />
+    </div>
+    <div class="col-md-6">
+
+      <label for="genre" class="form-label">Genre:</label>
+      <input name="genre" type="text" [(ngModel)]="newBook.genre" class="form-control"/><br />
+    </div>
+    <div class="col-md-2">
+      <label for="pageCount" class="form-label">Page Count:</label>
+      <input name="pageCount" type="text" [(ngModel)]="newBook.pageCount" class="form-control"/><br />
+    </div>
+    <div class="col-md-2">
+
+      <label for="price" class="form-label">Price:</label>
+      <input name="price" type="number" [(ngModel)]="newBook.price" class="form-control"/><br />
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+
+        <label for="hasRead" class="form-check-label">Has Read</label>
+        <input name="hasRead" type="checkbox" [(ngModel)]="newBook.hasRead" class="form-check-input"/><br />
+      </div>
+    </div>
+    <button (click)="addBook(newBook)" class="btn btn-primary">Add Book</button>
   </form>
 </div>
+
 <div id="singleTodo" *ngIf="selected && !editBook">
   <h3>{{ selected.id }}</h3>
   <p>
-    <img [src]="selected.pictureURL" width="200px" height="300px"/>
+    <img [src]="selected.pictureURL" width="200px" height="300px" />
   </p>
   <h3>{{ selected.title }}</h3>
   <p>{{ selected.description }}</p>
-  <p>{{ selected.hasRead }}</p>
-  <p>{{ selected.genre }}</p>
-  <p>{{ selected.author }}</p>
+  <p>Has it been read: {{ selected.hasRead }}</p>
+  <p>Genre: {{ selected.genre }}</p>
+  <p>Author: {{ selected.author }}</p>
+  <p>Page Count: {{ selected.pageCount }}</p>
+  <p>Price: {{ selected.price }}</p>
   <button class="btn btn-danger" (click)="displayTable()">Back</button>
   <button class="btn btn-primary" (click)="setEditBook()">Edit</button>
 </div>
 
 <div *ngIf="editBook">
-<form>
-  <h4>Edit Book #{{editBook.id}}</h4>
-  <label for="newBookTitle">Title:</label>
-  <input name= "newBookTitle"type ="text" [(ngModel)]="editBook.title"><br>
-  <label for="newBookdesc">Description:</label><br>
-  <textarea
-  name="newBookdesc"
-  [(ngModel)]="editBook.description"
-></textarea
-><br />
-  <label for="pageCount">pageCount:</label>
-  <input name= "pageCount"type ="text" [(ngModel)]="editBook.pageCount"><br>
-  <label for="price">price:</label>
-  <input name= "price"type ="number" [(ngModel)]="editBook.price"><br>
-  <label for="imgURL">img:</label>
-  <input name= "imgURL"type ="text" [(ngModel)]="editBook.pictureURL"><br>
-  <label for="hasRead">Has Read:</label>
-  <input name= "hasRead"type ="checkbox" [(ngModel)]="editBook.hasRead"><br>
-  <label for="author">Author:</label>
-  <input name= "author"type ="text" [(ngModel)]="editBook.author"><br>
-  <label for="genre">Genre:</label>
-  <input name= "genre"type ="text" [(ngModel)]="editBook.genre"><br>
-  <button class="btn btn-danger" (click)="editBook = null">Cancel</button>
-  <button class="btn btn-success" (click)="updateBook(editBook)">Save</button>
-</form>
+  <form class="row g-3">
+    <h4>Edit Book #{{ editBook.id }}</h4>
+    <div class="col-md-6">
+      <label for="editBookTitle" class="form-label">Title:</label>
+      <input name="editBookTitle" type="text" [(ngModel)]="editBook.title" class="form-control"/><br />
+    </div>
+    <div class="col-md-6">
+
+      <label for="editBookdesc" class="form-label">Description:</label>
+      <textarea name="editBookdesc"
+
+      [(ngModel)]="newBook.description"
+      class="form-control">
+      </textarea><br />
+    </div>
+    <label for="imgURL" class="form-label">Img:</label>
+    <input name="imgURL" type="text" [(ngModel)]="editBook.pictureURL" class="form-control"/><br />
+    <div class="col-md-6">
+
+      <label for="author" class="form-label">Author:</label>
+      <input name="author" type="text" [(ngModel)]="editBook.author" class="form-control"/><br />
+    </div>
+    <div class="col-md-6">
+
+      <label for="genre" class="form-label">Genre:</label>
+      <input name="genre" type="text" [(ngModel)]="editBook.genre" class="form-control"/><br />
+    </div>
+    <div class="col-md-2">
+      <label for="pageCount" class="form-label">Page Count:</label>
+      <input name="pageCount" type="text" [(ngModel)]="editBook.pageCount" class="form-control"/><br />
+    </div>
+    <div class="col-md-2">
+
+      <label for="price" class="form-label">Price:</label>
+      <input name="price" type="number" [(ngModel)]="editBook.price" class="form-control"/><br />
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+
+        <label for="hasRead" class="form-check-label">Has Read</label>
+        <input name="hasRead" type="checkbox" [(ngModel)]="editBook.hasRead" class="form-check-input"/><br />
+      </div>
+    </div>
+    <div class="col-12">
+
+      <button class="btn btn-success" (click)="updateBook(editBook)">Save</button><br><br>
+      <button class="btn btn-danger" (click)="editBook = null">Cancel</button>
+    </div>
+  </form>
 </div>
