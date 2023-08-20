@@ -45,11 +45,11 @@ class GenreTest {
 		assertNotNull(genre);
 		assertEquals("Fantasy", genre.getName());
 	}
-	@Test
-	void test_Genre_to_Book() {
-		assertNotNull(genre);
-		assertNotNull(genre.getBooks());
-		assertTrue(genre.getBooks().size() > 0);
-	}
+//	@Test
+//	void test_Genre_to_Book() {
+//		assertNotNull(genre);
+//		assertNotNull(genre.getBooks());
+//		assertTrue(genre.getBooks().size() > 0);
+//	}
 
 }

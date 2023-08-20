@@ -39,13 +39,17 @@ public class Book {
 	@Column(name = "has_read")
 	private boolean hasRead;
 	
-	@ManyToOne
-	@JoinColumn(name = "author_id")
-	private Author author;
+	private String author;
 	
-	@ManyToOne
-	@JoinColumn(name = "genre_id")
-	private Genre genre;
+	private String genre;
+	
+//	@ManyToOne
+//	@JoinColumn(name = "author_id")
+//	private Author author;
+//	
+//	@ManyToOne
+//	@JoinColumn(name = "genre_id")
+//	private Genre genre;
 
 	public Book() {
 		super();
@@ -115,19 +119,35 @@ public class Book {
 		this.hasRead = hasRead;
 	}
 
-	public Author getAuthor() {
+//	public Author getAuthor() {
+//		return author;
+//	}
+//
+//	public void setAuthor(Author author) {
+//		this.author = author;
+//	}
+//
+//	public Genre getGenre() {
+//		return genre;
+//	}
+//
+//	public void setGenre(Genre genre) {
+//		this.genre = genre;
+//	}
+
+	public String getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(Author author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-	public Genre getGenre() {
+	public String getGenre() {
 		return genre;
 	}
 
-	public void setGenre(Genre genre) {
+	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 

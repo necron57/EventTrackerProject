@@ -23,4 +23,20 @@ private url = environment.baseURL + "api/books"
     );
   }
 
+  create(book: Book): Observable<Book>{
+
+    return this.http.post<Book>(this.url, book).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error('TodoService.create(): error creating todo: ' + err)
+        );
+      })
+    );
+  }
+
+  update(){}
+
+  delete(){}
+
 }

@@ -46,21 +46,22 @@ class BookTest {
 	void test_Basic_mapping() {
 		assertNotNull(book);
 		assertEquals("The Wolf Never Sleeps", book.getTitle());
+		assertEquals("ShienBishop", book.getAuthor());
 	}
 	
-	@Test
-	void test_Book_to_Author() {
-		assertNotNull(book);
-		assertNotNull(book.getAuthor());
-		assertEquals("ShienBishop", book.getAuthor().getName());
-		
-	}
-	@Test
-	void test_Book_to_Genre() {
-		assertNotNull(book);
-		assertNotNull(book.getGenre());
-		assertEquals("Fantasy", book.getGenre().getName());
-		
-	}
+//	@Test
+//	void test_Book_to_Author() {
+//		assertNotNull(book);
+//		assertNotNull(book.getAuthor());
+//		assertEquals("ShienBishop", book.getAuthor().getName());
+//		
+//	}
+//	@Test
+//	void test_Book_to_Genre() {
+//		assertNotNull(book);
+//		assertNotNull(book.getGenre());
+//		assertEquals("Fantasy", book.getGenre().getName());
+//		
+//	}
 
 }

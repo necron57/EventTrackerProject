@@ -47,11 +47,11 @@ class AuthorTest {
 		assertNotNull(author);
 		assertEquals("ShienBishop", author.getName());
 	}
-	@Test
-	void test_Author_to_Book() {
-		assertNotNull(author);
-		assertNotNull(author.getBooks());
-		assertTrue(author.getBooks().size() > 0);;
-	}
+//	@Test
+//	void test_Author_to_Book() {
+//		assertNotNull(author);
+//		assertNotNull(author.getBooks());
+//		assertTrue(author.getBooks().size() > 0);;
+//	}
 
 }

@@ -1,3 +1,6 @@
+import { Author } from "./author";
+import { Genre } from "./genre";
+
 export class Book {
   id: number;
   title: string;
@@ -6,6 +9,8 @@ export class Book {
   price: number;
   imgURL: string;
   hasRead: boolean;
+  genre: string;
+  author: string;
 
   constructor(
     id: number = 0,
@@ -14,7 +19,9 @@ export class Book {
     pageCount: string = '',
     price: number = 0,
     imgURL: string = '',
-    hasRead: boolean = false
+    hasRead: boolean = false,
+    author: string = '',
+    genre: string = ''
   ) {
     this.id = id;
     this.title = title;
@@ -23,5 +30,7 @@ export class Book {
     this.price = price;
     this.imgURL = imgURL;
     this.hasRead = hasRead;
+    this.genre = genre;
+    this.author = author;
   }
 }

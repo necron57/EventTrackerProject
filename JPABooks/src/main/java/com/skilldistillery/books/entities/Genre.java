@@ -20,9 +20,9 @@ public class Genre {
 	
 	private String name;
 	
-	@OneToMany(mappedBy = "genre")
-	@JsonIgnore
-	private List<Book> books;
+//	@OneToMany(mappedBy = "genre")
+//	@JsonIgnore
+//	private List<Book> books;
 
 	public Genre() {
 		super();
@@ -44,13 +44,13 @@ public class Genre {
 		this.name = name;
 	}
 
-	public List<Book> getBooks() {
-		return books;
-	}
-
-	public void setBooks(List<Book> books) {
-		this.books = books;
-	}
+//	public List<Book> getBooks() {
+//		return books;
+//	}
+//
+//	public void setBooks(List<Book> books) {
+//		this.books = books;
+//	}
 
 	@Override
 	public int hashCode() {
