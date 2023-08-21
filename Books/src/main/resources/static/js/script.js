@@ -238,7 +238,7 @@ function displayBookDetails(book) {
 	form.appendChild(detstroy);
 
 	detstroy.addEventListener("click", function(e) {
-	
+
 		deleteBook(book.id);
 
 	});
@@ -247,7 +247,7 @@ function displayBookDetails(book) {
 
 function createBook() {
 	document.BookCreate.submitButton.addEventListener('click', function(e) {
-	e.preventDefault();
+		e.preventDefault();
 		let form = document.BookCreate;
 		let title = form.title.value;
 		let description = form.description.value;
@@ -255,6 +255,9 @@ function createBook() {
 		let price = form.price.value;
 		let pictureURL = form.pictureURL.value;
 		let hasRead = form.hasRead.value;
+		let author = form.author.value;
+		let genre = form.genre.value;
+
 
 		let newBook = {
 			"title": title,
@@ -263,12 +266,8 @@ function createBook() {
 			"price": price,
 			"pictureURL": pictureURL,
 			"hasRead": hasRead,
-			"author": {
-				"id": 2,
-			},
-			"genre": {
-				"id": 2,
-			}
+			"author": author,
+			"genre": genre
 		};
 		let xhr = new XMLHttpRequest();
 
@@ -324,6 +323,8 @@ function updateBook(book) {
 	let price = form.price.value;
 	let pictureURL = form.pictureURL.value;
 	let hasRead = form.hasRead.value;
+	let author = form.author.value;
+	let genre = form.genre.value;
 
 	let newBook = {
 		"title": title,
@@ -332,12 +333,8 @@ function updateBook(book) {
 		"price": price,
 		"pictureURL": pictureURL,
 		"hasRead": hasRead,
-		"author": {
-			"id": 2,
-		},
-		"genre": {
-			"id": 2,
-		}
+		"author": author,
+		"genre": genre
 	};
 
 	let xhr = new XMLHttpRequest();
@@ -352,7 +349,7 @@ function updateBook(book) {
 				let createdBook = JSON.parse(xhr.responseText);
 				console.log(createdBook);
 				displayBookDetails(createdBook);
-				
+
 
 			} else {
 				console.error("PUT request failed.");
