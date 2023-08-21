@@ -1,5 +1,7 @@
 <h1>What a Book worm!</h1>
-
+<span *ngFor="let type of bookList" (click)="selected = type">
+  {{type.genre}} :
+</span>
 <div *ngIf="!selected">
   <table class="table table-dark table-striped table-hover">
     <thead>

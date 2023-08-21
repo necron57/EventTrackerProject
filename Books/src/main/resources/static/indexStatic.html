@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Book tracker</title>
+	<script src="js/script.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body>
+<div class="container-fluid" >
+	<h1>Book tracker</h1>
+
+	<div id="tableDiv"></div>
+	
+	<div id="bookDetailDiv">
+
+	</div>
+
+	<form name="BookCreate">
+		<h2>Add a new book:</h2>
+
+		<label for="title">Title:</label><br>
+		<input type="text" name="title"><br>
+
+		<label for="description">Description:</label><br>
+		<input type="text" name="description"><br>
+		
+		<label for="author">Author:</label><br>
+		<input type="text" name="author"><br>
+		
+		<label for="genre">Genre:</label><br>
+		<input type="text" name="genre"><br>
+
+		<label for="pageCount">Page Count:</label><br>
+		<input type="text" name="pageCount"><br>
+
+		<label for="price">Price:</label><br>
+		<input type="number" name="price"><br>
+
+		<label for="pictureURL">Picture URL:</label><br>
+		<input type="text" name="pictureURL"><br>
+
+		<label for="hasRead">Has it been read yet?:</label><br>
+		<input type="radio" name="hasRead" value="true">Yes<br>
+		<input type="radio" name="hasRead" value="false">No<br>
+
+
+		<button name="submitButton">Submit</button>
+	</form>
+
+	<div id="errors"></div>
+</div>
+<a href="index.html">Change to Angular frontend</a>
+</body>
+
+</html>

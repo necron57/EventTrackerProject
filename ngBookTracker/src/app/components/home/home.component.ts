@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   newBook: Book = new Book();
   editBook: Book | null = null;
   selected: Book | null = null;
-
+  selectedType: String = '';
   constructor(private bookService: BookService) {}
 
   ngOnInit(): void {
